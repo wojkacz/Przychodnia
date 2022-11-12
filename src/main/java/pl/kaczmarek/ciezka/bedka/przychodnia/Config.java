@@ -31,19 +31,17 @@ public class Config {
             // ======== Dummy data ========
 
             // VisitDates
-            LocalDate date = LocalDate.now().plusDays(1);
-            LocalDate nextMonth = date.plusMonths(1);
-            while (date.isBefore(nextMonth)) {
+            LocalDate date = Constants.VISIT_DATES_START_DAY;
+            while (date.isBefore(Constants.VISIT_DATES_FINAL_DAY)) {
                 if( date.getDayOfWeek() != DayOfWeek.SATURDAY &&
                     date.getDayOfWeek() != DayOfWeek.SUNDAY) {
 
-                    LocalTime time = LocalTime.of(8,0);
-                    LocalTime finishTime = LocalTime.of(16,1);
-                    while (time.isBefore(finishTime)){
+                    LocalTime time = Constants.VISIT_TIMES_START_TIME;
+                    while (time.isBefore(Constants.VISIT_TIMES_FINAL_TIME)){
                         VisitDate vd = new VisitDate(date, time);
                         visitDateRepository.saveAndFlush(vd);
                         Logger.logVisitDate(vd);
-                        time = time.plusMinutes(30);
+                        time = time.plusMinutes(Constants.VISIT_LENGTH_MINUTES);
                     }
                 }
                 date = date.plusDays(1);

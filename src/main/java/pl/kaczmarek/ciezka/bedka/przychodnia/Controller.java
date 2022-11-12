@@ -81,12 +81,19 @@ public class Controller {
             return new ResponseEntity<>(Constants.REGISTRATION_NOT_FOUND, HttpStatus.NOT_FOUND);
         }
 
+        boolean anyPut = false;
         JSONArray result = new JSONArray();
         for(Registration registration : registrations) {
             if(!registration.getCancelled()) {
                 result.put(registration.getJSONObject());
+                anyPut = true;
             }
         }
+
+        if(!anyPut) {
+            return new ResponseEntity<>(Constants.REGISTRATION_NOT_FOUND, HttpStatus.NOT_FOUND);
+        }
+
         return new ResponseEntity<>(result.toString(), HttpStatus.OK);
     }
 

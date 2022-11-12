@@ -6,9 +6,7 @@ import pl.kaczmarek.ciezka.bedka.przychodnia.Registration.Registration;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Table
 @Entity
@@ -38,7 +36,6 @@ public class VisitDate {
 
     public JSONObject getJSONObject(){
         return new JSONObject()
-            .put("date", date)
             .put("time", time);
     }
 

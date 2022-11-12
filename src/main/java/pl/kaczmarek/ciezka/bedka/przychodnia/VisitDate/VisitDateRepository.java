@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Repository
 public interface VisitDateRepository extends JpaRepository<VisitDate, Long> {
-    @Query("SELECT * FROM VisitDate v WHERE v.date = ?1")
+    @Query("SELECT v FROM VisitDate v WHERE v.date = ?1")
     List<VisitDate> findByDate(LocalDate date);
 
     @Query("SELECT v FROM VisitDate v WHERE v.date = ?1 and v.time = ?2")
