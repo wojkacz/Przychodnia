@@ -46,6 +46,7 @@ public class Doctor {
 
     public JSONObject getJSONObject(){
         return new JSONObject()
+            .put("doctorID", doctorID)
             .put("name", personData.getName())
             .put("surname", personData.getSurname())
             .put("specialization", specialization.getSpecName())
